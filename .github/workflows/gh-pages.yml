@@ -34,7 +34,7 @@ jobs:
           ${{ runner.os }}-
 
     - run: yarn
-    - name: 編譯網頁
+    - name: ${{ secrets.BASEURL }}
       run: yarn build
       env:
         BASEURL: ${{ secrets.BASEURL }}
@@ -42,7 +42,7 @@ jobs:
         LIFFID_SHARE_CSV: ${{ secrets.LIFFID_SHARE_CSV }}
         LIFFID_SHARE: ${{ secrets.LIFFID_SHARE }}
 
-    - name: 建立 CNAME 檔案
+    - name: ${{ secrets.CNAME }}
       shell: bash
       run: '[[ -z "$CNAME" ]] || echo $CNAME > dist/CNAME'
       env:
